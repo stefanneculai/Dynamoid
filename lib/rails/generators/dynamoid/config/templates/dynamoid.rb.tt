@@ -1,0 +1,22 @@
+Dynamoid.configure do |config|
+  # This adapter establishes a connection to the DynamoDB servers using Amazon's own AWS gem.
+  config.adapter = "aws_sdk"
+
+  # To namespace tables created by Dynamoid from other tables you might have.
+  config.namespace = "<%= namespace  %>"
+
+  # Output a warning to the logger when you perform a scan rather than a query on a table.
+  config.warn_on_scan = true
+
+  # Spread writes randomly across the database. See "partitioning" below for more.
+  config.partitioning = true
+
+  # Determine the key space size that writes are randomly spread across.
+  config.partition_size = 200
+
+  # Read capacity for your tables.
+  config.read_capacity = 10
+
+  # Write capacity for your tables.
+  config.write_capacity = 5
+end
